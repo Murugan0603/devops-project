@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "murugan0603/devops-app"
+        DOCKER_IMAGE = "mano0603/devops-app"
     }
 
     stages {
@@ -23,7 +23,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker login -u murugan0603 -p dckr_pat_lDJTc_vYxFUeV_prl9vioHUEaQw'
+                bat 'docker login -u mano0603 -p dckr_pat_lDJTc_vYxFUeV_prl9vioHUEaQw'
                 bat 'docker push %DOCKER_IMAGE%'
             }
         }
