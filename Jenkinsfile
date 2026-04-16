@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "YOUR_DOCKER_USERNAME/devops-app"
+        DOCKER_IMAGE = "Murugan0603/devops-app"
     }
 
     stages {
 
         stage('Clone') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+                git 'https://github.com/Murugan0603/devops-project.git'
             }
         }
 
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker login -u YOUR_DOCKER_USERNAME -p YOUR_PASSWORD'
+                sh 'docker login -u Murugan0603 -p YOUR_PASSWORD'
                 sh 'docker push $DOCKER_IMAGE'
             }
         }
