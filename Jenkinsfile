@@ -16,21 +16,21 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 dir('app') {
-                    sh 'docker build -t $DOCKER_IMAGE .'
+                    bat 'docker build -t %DOCKER_IMAGE% .'
                 }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker login -u murugan0603 -p Mano@0603'
-                sh 'docker push $DOCKER_IMAGE'
+                bat 'docker login -u murugan0603 -p mano@0603'
+                bat 'docker push %DOCKER_IMAGE%'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f k8s/'
+                bat 'kubectl apply -f k8s/'
             }
         }
     }
