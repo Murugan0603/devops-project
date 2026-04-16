@@ -2,26 +2,28 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "Murugan0603/devops-app"
+        DOCKER_IMAGE = "murugan0603/devops-app"
     }
 
     stages {
 
         stage('Clone') {
-    steps {
-        git branch: 'main', url: 'https://github.com/Murugan0603/devops-project.git'
-    }
-}
+            steps {
+                git branch: 'main', url: 'https://github.com/Murugan0603/devops-project.git'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE ./app'
+                dir('app') {
+                    sh 'docker build -t $DOCKER_IMAGE .'
+                }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker login -u Murugan0603 -p YOUR_PASSWORD'
+                sh 'docker login -u murugan0603 -p YOUR_DOCKER_PASSWORD'
                 sh 'docker push $DOCKER_IMAGE'
             }
         }
