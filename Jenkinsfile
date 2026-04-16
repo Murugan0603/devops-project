@@ -23,7 +23,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                bat 'docker login -u murugan0603 -p mano@0603'
+                bat 'docker login -u murugan0603 -p dckr_pat_lDJTc_vYxFUeV_prl9vioHUEaQw'
                 bat 'docker push %DOCKER_IMAGE%'
             }
         }
